@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/homepagestyle/homepage_style.css">
+        <link rel="icon" href="/homepagestyle/slepashop2.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title th:text="${pageTitle}">SlepanShop.pl</title>
+    </head>
+    <body>
+        <div class="header-banner">
+            <div class="header-container-with-info">
+                <div class="left-header-banner">
+                    <img class="icon-on-header-banner" src="/homepagestyle/slepashop2.ico" alt="Icon">
+                    <a th:href="@{/}"><p class="header-logo-text">SlepanShop.pl</p></a>
+                </div>
+                <div class="right-header-banner">
+
+                    <form class="form">
+                        <label for="search">
+                            <input required="" autocomplete="off" placeholder="search" id="search" type="text">
+                            <div class="icon">
+                                <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="swap-on">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round" stroke-linecap="round"></path>
+                                </svg>
+                                <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="swap-off">
+                                    <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linejoin="round" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                            <button type="reset" class="close-btn">
+                                <svg viewBox="0 0 20 20" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </label>
+                    </form>
+                    <!-- check on login -->
+                    <div sec:authorize="isAuthenticated()">
+                        <a th:href="@{/account}">
+                            <p class="header-account">Hello, <span sec:authentication="name"></span><i class="fa-solid fa-user" style="color: #ffffff;"></i></p>
+                        </a>
+                    </div>
+                    <div sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}"><p class="header-account">Log in/Register<i class="fa-solid fa-user" style="color: #ffffff;"></i></p></a>
+                    </div>
+
+                    <p class="header-koszyk">Cart<i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="midlle-container">
+            <div class="banner">
+                <img class="banner-photo" src="homepagestyle/banner.png" alt="SlepanShop.pl">
+            </div>
+            <div class="products">Products</div>
+            <div class="middle-menu">
+                <div class="middle-menu categories"><figure><img class="komputer" src="/homepagestyle/pc_and_laptop.png" alt="pc and laptop"><figcaption>Laptops and computers</figcaption></figure></div>
+                <div class="middle-menu categories"><figure><img class="product-photo" src="/homepagestyle/sprzent.png" alt="sprzet pc"><figcaption>PC hardware</figcaption></figure></div>
+                <div class="middle-menu categories"><figure><img class="product-photo" src="/homepagestyle/aksesory.png" alt="accessories"><figcaption>Accessories</figcaption></figure></div>
+                <div class="middle-menu categories"><figure><img class="product-photo" src="/homepagestyle/gaming.png" alt="gaming"><figcaption>Gaming</figcaption></figure></div>
+            </div>
+        </div>
+        <footer class="footer-container">
+            <div class="footer-info-first box"><h4 class="footer-heads">Order</h4></div>
+<!--            <div class="footer-info-second box"><h5 class="footer-heads"></h5></div>-->
+            <div class="footer-info-third box"><h3 class="footer-heads">SlepanShop</h3></div>
+            <div class="footer-info-fourth box"><h2 class="footer-heads">Contact</h2></div>
+        </footer>
+        
+            
+    </body>
+</html>
